@@ -3,7 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 
-def create_canvas(width_pixels: int, height_pixels: int, background_color: str ='white', dpi: int=100) -> tuple:
+from typing import Callable, Any
+
+def create_canvas(width_pixels: int,
+    height_pixels: int,
+    background_color: str ='white',
+    dpi: int=100) -> tuple:
     """
     Creates a blank canvas for plotting.
 
@@ -35,8 +40,10 @@ def create_canvas(width_pixels: int, height_pixels: int, background_color: str =
     return fig, ax
 
 
-
-def save_canvas(fig: plt.Figure, file_name: str, pad_inches: float=0, dpi: int=100) -> None:
+def save_canvas(fig: plt.Figure,
+    file_name: str,
+    pad_inches: float=0,
+    dpi: int=100) -> None:
     """
     Saves the canvas to a file.
 
@@ -49,3 +56,42 @@ def save_canvas(fig: plt.Figure, file_name: str, pad_inches: float=0, dpi: int=1
     fig.savefig(file_name, bbox_inches='tight', pad_inches=pad_inches, dpi=dpi)
 
 
+def create_sample(
+    canvas_width_px: int,
+    canvas_height_px: int,
+    background_color: str = 'white',
+    dpi: int = 100,
+    file_name: str | None = None,
+    plot_function: Callable[[Any], None] | None = None,
+    **plot_kwargs: Any) -> None:
+    """
+    Creates a pixel accurate sample plotted with a given function and saves it to a file.
+
+    Args:
+        canvas_width_px: The width of the canvas in pixels.
+        canvas_height_px: The height of the canvas in pixels.
+        background_color: The background color of the canvas. Defaults to 'white'.
+        dpi: The resolution of the canvas in dots per inch. Defaults to 100.
+        file_name: The file name to save the plot to. If None, the plot will not be saved.
+        plot_function: The function to plot. Must take a dictionary of keyword arguments.
+        **plot_kwargs: Additional keyword arguments to pass to the plot function.
+
+    Raises:
+        ValueError: If plot_function is None.
+    """
+    if plot_function is None:
+        raise ValueError(f"Invalid value for plot_function: {plot_function}")
+
+    fig, ax = create_canvas(
+        width_pixels=canvas_width_px,
+        height_pixels=canvas_height_px,
+        background_color=background_color,
+        dpi=dpi
+    )
+    # Add ax to key word args list
+    plot_kwargs['ax'] = ax
+
+    plot_function(**plot_kwargs)
+
+    if file_name is not None:
+        save_canvas(fig, file_name)
