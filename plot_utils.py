@@ -1,4 +1,5 @@
 import numpy as np
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
@@ -53,6 +54,11 @@ def save_canvas(fig: plt.Figure,
         pad_inches (float, optional): Padding around the saved figure, in inches. Defaults to 0.
         dpi (int, optional): Dots per inch (resolution) of the saved figure. Defaults to 100.
     """
+    # Create parent folder if necessary
+    resultpath = Path(file_name).parent
+    if not resultpath.exists():
+        resultpath.mkdir(parents=True)
+
     fig.savefig(file_name, bbox_inches='tight', pad_inches=pad_inches, dpi=dpi)
 
 
