@@ -27,8 +27,9 @@ def draw_polygon(ax: plt.Axes, x: float, y: float, radius: float, n_points: int,
     angles = np.linspace(0, 2 * np.pi, n_points, endpoint=False) + np.deg2rad(rotation_angle)
     vertices = np.column_stack([x + radius * np.cos(angles), y + radius * np.sin(angles)])
     polygon = Polygon(vertices, closed=True, edgecolor=color, facecolor=color)
+
     ax.add_patch(polygon)
-    
+
     # Compute interpolated color value for outline
     if outline == "interpolate":
         background_color = ax.get_figure().get_facecolor()
@@ -38,6 +39,8 @@ def draw_polygon(ax: plt.Axes, x: float, y: float, radius: float, n_points: int,
     if outline is not None and linewidth is not None:
         polygon.set_linewidth(linewidth)
         polygon.set_edgecolor(outline)
+    
+    plt.plot()
 
 
 from matplotlib.patches import Ellipse
@@ -74,6 +77,8 @@ def draw_ellipse(ax: plt.Axes, x: float, y: float, width: float, height: float, 
         ellipse.set_linewidth(linewidth)
         ellipse.set_edgecolor(outline)
 
+    plt.plot()    
+
 
 from matplotlib.patches import Rectangle
 
@@ -109,6 +114,8 @@ def draw_rectangle(ax: plt.Axes, x: float, y: float, width: float, height: float
     if outline is not None and linewidth is not None:
         rectangle.set_linewidth(linewidth)
         rectangle.set_edgecolor(outline)
+
+    plt.plot()
 
 
 from matplotlib.patches import Polygon
@@ -169,6 +176,8 @@ def draw_parallelogram(ax: plt.Axes, x: float, y: float, width: float, height: f
         parallelogram.set_linewidth(linewidth)
         parallelogram.set_edgecolor(outline)
 
+    plt.plot()
+
 
 def draw_star(ax: plt.Axes, x: float, y: float, outer_radius: float, inner_radius: float, num_peaks: int, color: str, rotation_angle: float = 0, outline: str = None, linewidth: float = 1) -> None:
     """
@@ -207,4 +216,4 @@ def draw_star(ax: plt.Axes, x: float, y: float, outer_radius: float, inner_radiu
         polygon.set_linewidth(linewidth)
         polygon.set_edgecolor(outline)
 
-        
+    plt.plot()
