@@ -4,9 +4,9 @@
 Tools to create images with several geometric shapes for toy data generation.
 
 
-## Tutorial/Demo <a name="demos"></a>
-
-    - [Demo](https://github.com/berni-lehner/shapetastic/blob/main/demo.ipynb)
+## Demo/Tutorials<a name="demo"></a>
+- **General tutorial**
+    - [tutorial](https://github.com/berni-lehner/shapetastic/blob/main/tutorial.ipynb)
 
 
 ## Toy Datasets <a name="toy datasets"></a>
