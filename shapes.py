@@ -141,6 +141,9 @@ def draw_parallelogram(ax: plt.Axes, x: float, y: float, width: float, height: f
     Returns:
         None
     """
+    # Compensate for skew
+    rotation_angle = rotation_angle+skew
+
     # Calculate translation for skew along x-axis
     tx = height * np.tan(np.deg2rad(skew))
 
