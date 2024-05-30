@@ -141,6 +141,12 @@ def draw_parallelogram(ax: plt.Axes, x: float, y: float, width: float, height: f
     Returns:
         None
     """
+    # TODO: workaround to ensure proper correspondence to rotation_angle and skew
+    tmp = width
+    width = height
+    height = tmp
+    rotation_angle = (rotation_angle+90) % 360
+
     # Compensate for skew
     rotation_angle = rotation_angle+skew
 
