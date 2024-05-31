@@ -34,7 +34,7 @@ Unless you change the random number generator seed, the results are deterministi
 
 ![preview](https://github.com/berni-lehner/shapetastic/blob/main/meta/shapetastic_50k_cb_cs.png?raw=true)
 
-- **60k grayscale images of three different elongated shapes with fine-graned rotations (every 10 degree)**
-    - [shapetastic_50k_gs_rot](https://github.com/berni-lehner/shapetastic/blob/main/shapetastic_60k_gs_rot.ipynb)
+- **180k grayscale images of three different elongated shapes with fine-graned rotations (every 5 degree)**
+    - [shapetastic_60k_gs_rot](https://github.com/berni-lehner/shapetastic/blob/main/shapetastic_60k_gs_rot.ipynb)
 
 ![preview](https://github.com/berni-lehner/shapetastic/blob/main/meta/shapetastic_60k_gs_rot.png?raw=true)
