@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 
-from color_utils import interpolate_color
+from .color_utils import interpolate_color
 
 def draw_polygon(ax: plt.Axes, x: float, y: float, radius: float, n_points: int, color: str, rotation_angle: float = 0, outline: str = None, linewidth: float = 1) -> None:
     """
